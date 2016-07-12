@@ -1,8 +1,12 @@
 from flask import Flask, render_template
+import os
+static_folder_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+
 app = Flask(__name__)
+app._static_folder = static_folder_root
 
 
-@app.route('/')
+@app.route('/home')
 def index():
     return render_template('index.html')
 
