@@ -16,7 +16,7 @@
       <hr>
       <ul>
         <li>repl.it explained</li>
-        <li>Python walk-through</li>
+        <li>Python walkthrough</li>
         <li>Python challenges</li>
         <li>Solutions</li>
       </ul>
@@ -76,11 +76,11 @@
       {% endif %}
       <hr>
       <div id="solutions" class="collapse">
-        {% for i, solution in enumerate(solutions) %}
-          <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#{{ solution.id_ }}solution">#{{ i }} - {{ solution.title }}</button>
-          <div id="{{ solution.id_ }}solution" class="collapse">
+        {% for i, challenge in enumerate(challenges) %}
+          <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#{{ challenge.id_ }}solution">#{{ i }} - {{ challenge.title }}</button>
+          <div id="{{ challenge.id_ }}solution" class="collapse">
             <br>
-            <center><script src="{{ solution.repl_src }}"></script></center>
+            <center><script src="{{ challenge.repl_solution }}"></script></center>
           </div>
           <hr>
         {% endfor %}

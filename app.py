@@ -31,14 +31,18 @@ Solution = namedtuple("Solution", ["title", "id_", "repl_src"])
 class Challenge(object):
 
     def __init__(
-        self, title='', id_='', hints=None, description='', repl_src='',
-        graphic=None):
+        self, title='', id_='', hints=None, description=None, repl_src='',
+        repl_solution='', graphic=None):
         self.title = title
         self.id_ = id_
         self.hints = hints
-        self.description = description
+        if description is None:
+            self.description = 'Modify the follow code according to the specification.'
+        else:
+            self.description = description
         self.repl_src = repl_src
         self.graphic = graphic
+        self.repl_solution = repl_solution
 
 
 def session_challenges(session_num):
@@ -57,7 +61,8 @@ def session_challenges(session_num):
                          caption="Python"),
                 ],
                 description='Modify the following Python program to say, "Hello, World!".',
-                repl_src="//repl.it/embed/CeZU/2.js"
+                repl_src="//repl.it/embed/CeZU/2.js",
+                repl_solution='//repl.it/embed/CeZe/0.js'
             ),
             Challenge(
                 title='Strings',
@@ -69,75 +74,80 @@ def session_challenges(session_num):
                          caption="Python"),
                 ],
                 description='Modify the follow code so that the type of the variable <i>my_string</i> is a string.',
-                repl_src="//repl.it/embed/CgBf/0.js"
+                repl_src="//repl.it/embed/CgBf/0.js",
+                repl_solution="//repl.it/embed/CgBm/1.js"
             ),
             Challenge(
                 title='Integers',
                 id_='integers',
                 description='Modify the follow code so that the type of the variable <i>my_int</i> is an integer.',
-                repl_src="//repl.it/embed/CgBx/0.js"
+                repl_src="//repl.it/embed/CgBx/0.js",
+                repl_solution='//repl.it/embed/CgCA/0.js'
             ),
             Challenge(
                 title='Booleans',
                 id_='booleans',
                 description='Modify the follow code so that the type of the variable <i>my_bool</i> is a boolean.',
-                repl_src="//repl.it/embed/CgCS/0.js"
+                repl_src="//repl.it/embed/CgCS/0.js",
+                repl_solution='//repl.it/embed/CgEq/0.js'
             ),
             Challenge(
                 title='Lists',
                 id_='lists',
-                description='Modify the follow code according to the specification.',
-                repl_src="//repl.it/embed/CgFH/1.js"
+                repl_src="//repl.it/embed/CgFH/1.js",
+                repl_solution='//repl.it/embed/CgFJ/0.js'
             ),
             Challenge(
                 title='List Append',
                 id_='list_append',
-                description='Modify the follow code according to the specification.',
-                repl_src="//repl.it/embed/CgFm/0.js"
+                repl_src="//repl.it/embed/CgFm/0.js",
+                repl_solution='//repl.it/embed/CgFp/0.js'
+            ),
+            Challenge(
+                title='List Indices',
+                id_='list_indices',
+                repl_src='//repl.it/embed/Ce0B/3.js',
+                repl_solution='//repl.it/embed/CgN2/0.js'
+            ),
+            Challenge(
+                title='Personalized Greeting',
+                id_='personalzied_greeting',
+                repl_src="//repl.it/embed/CeZl/2.js",
+                repl_solution='//repl.it/embed/CgMZ/0.js'
+            ),
+            Challenge(
+                title='Conditional Greeting',
+                id_='conditional_greeting',
+                repl_src="//repl.it/embed/CeZt/1.js",
+                repl_solution='//repl.it/embed/CeZv/0.js'
+            ),
+            Challenge(
+                title='Counter',
+                id_='counter',
+                repl_src='//repl.it/embed/CeZw/3.js',
+                repl_solution='//repl.it/embed/CeZx/1.js'
+            ),
+            Challenge(
+                title='Friends',
+                id_='friends',
+                repl_src='//repl.it/embed/CeZn/12.js',
+                repl_solution='//repl.it/embed/CeZn/13.js'
+            ),
+            Challenge(
+                title='Beer Song',
+                id_='beer_song',
+                repl_src='//repl.it/embed/Ce0F/1.js',
+                repl_solution='//repl.it/embed/Ce0G/1.js'
+            ),
+            Challenge(
+                title='',
+                id_='',
+                repl_src='',
+                repl_solution=''
             ),
         ]
 
     return challenges
-
-def session_solutions(session_num):
-    solutions = []
-
-    session_num = int(session_num)
-    if session_num == 2:
-        solutions = [
-            Solution(
-                title='Hello, World!',
-                id_='hello',
-                repl_src='//repl.it/embed/CeZe/0.js'
-            ),
-            Solution(
-                title='Strings',
-                id_='strings',
-                repl_src='//repl.it/embed/CgBm/1.js'
-            ),
-            Solution(
-                title='Integers',
-                id_='integers',
-                repl_src='//repl.it/embed/CgCA/0.js'
-            ),
-            Solution(
-                title='Booleans',
-                id_='booleans',
-                repl_src='//repl.it/embed/CgEq/0.js'
-            ),
-            Solution(
-                title='Lists',
-                id_='lists',
-                repl_src='//repl.it/embed/CgFJ/0.js'
-            ),
-            Solution(
-                title='List Append',
-                id_='list_append',
-                repl_src='//repl.it/embed/CgFp/0.js'
-            ),
-        ]
-
-    return solutions
 
 
 @app.route('/sessions/<session_number>')
@@ -147,12 +157,10 @@ def sessions(session_number):
         session_number=session_number)
 
     challenges = session_challenges(session_number)
-    solutions = session_solutions(session_number)
 
     return render_template(
         folder + template,
         challenges=challenges,
-        solutions=solutions,
         disable_solutions=disable_solutions,
         enumerate=enumerate
     )
