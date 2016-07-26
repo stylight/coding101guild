@@ -89,6 +89,12 @@ def session_challenges(session_num):
                 description='Modify the follow code according to the specification.',
                 repl_src="//repl.it/embed/CgFH/1.js"
             ),
+            Challenge(
+                title='List Append',
+                id_='list_append',
+                description='Modify the follow code according to the specification.',
+                repl_src="//repl.it/embed/CgFm/0.js"
+            ),
         ]
 
     return challenges
@@ -123,6 +129,11 @@ def session_solutions(session_num):
                 title='Lists',
                 id_='lists',
                 repl_src='//repl.it/embed/CgFJ/0.js'
+            ),
+            Solution(
+                title='List Append',
+                id_='list_append',
+                repl_src='//repl.it/embed/CgFp/0.js'
             ),
         ]
 
