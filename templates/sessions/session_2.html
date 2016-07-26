@@ -21,11 +21,15 @@
         <li>Solutions</li>
       </ul>
       <hr>
+
       <h3>Python Walkthrough</h3>
       <hr>
-      <h4>Python Calculator</h4>
-      <br>
-      <center><script src="//repl.it/embed/CgAW/2.js"></script></center>
+      <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#calculator">Python Calculator</button>
+      <div id="calculator" class="collapse">
+        <br>
+        <center><script src="//repl.it/embed/CgAW/2.js"></script></center>
+      </div>
+
       <h3>Python Challenges</h3>
       <hr>
       <h4>Helpful resources</h4>
@@ -34,46 +38,35 @@
         <li><h5>repl.it <a target="_blank"  href="https://repl.it/examples">languages</a>. Select Python3 and then navigate to <i>examples</i> in the top right corner.</h5></li>
       </ul>
       <hr>
-      <h4>#1 - Hello, World!</h4>
-      <p>Modify the following Python program to say, "Hello, World!".</p>
-      <hr>
-      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#hello">Hints</button>
-      <div id="hello" class="collapse">
-        <br>
-        <img src="/static/images/session2/hello/scratch.png"/>
-        <figcaption>Scratch</figcaption>
-        <br>
-        <img src="/static/images/session2/hello/python.png"/>
-        <figcaption>Python</figcaption>
-      </div>
-      <hr>
-      <center><script src="//repl.it/embed/CeZU/2.js"></script></center>
-      <hr>
-      <h4>#2 - Strings</h4>
-      <p>Modify the follow code so that the type of the variable <i>my_string</i> is a string.</p>
-      <hr>
-      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#strings">Hints</button>
-      <div id="strings" class="collapse">
-        <br>
-        <img src="/static/images/session2/strings/scratch.png"/>
-        <figcaption>Scratch</figcaption>
-        <br>
-        <img src="/static/images/session2/strings/python.png"/>
-        <figcaption>Python</figcaption>
-      </div>
-      <hr>
-      <center><script src="//repl.it/embed/CgBf/0.js"></script></center>
-      <hr>
-      <h4>#3 - Integers</h4>
-      <p>Modify the follow code so that the type of the variable <i>my_int</i> is an integer.</p>
-      <hr>
-      <center><script src="//repl.it/embed/CgBx/0.js"></script></center>
-      <hr>
-      <h4>#4 - Booleans</h4>
-      <p>Modify the follow code so that the type of the variable <i>my_bool</i> is a boolean.</p>
-      <hr>
-      <center><script src="//repl.it/embed/CgCS/0.js"></script></center>
-      <hr>
+
+      {% for i, challenge in enumerate(challenges) %}
+        <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#{{ challenge.id_ }}">#{{ i }} - {{ challenge.title }}</button>
+        <div id="{{ challenge.id_ }}" class="collapse">
+          <br>
+          <p>{{ challenge.description|safe }}</p>
+          {% if challenge.graphic is not none %}
+            <br>
+            <center><img src="{{ challenge.graphic }}"/></center>
+            <br>
+            <br>
+          {% endif %}
+          <hr>
+          {% if challenge.hints is not none %}
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{ challenge.id_ }}hint">Hints</button>
+            <div id="{{ challenge.id_ }}hint" class="collapse">
+              {% for hint in challenge.hints %}
+                <br>
+                <img src="{{ hint.src }}"/>
+                <figcaption>{{ hint.caption }}</figcaption>
+              {% endfor %}
+            </div>
+            <hr>
+          {% endif %}
+          <center><script src="{{ challenge.repl_src }}"></script></center>
+        </div>
+        <hr>
+      {%  endfor  %}
+
       <h3>Solutions</h3>
       <hr>
       {% if disable_solutions() %}
@@ -83,22 +76,14 @@
       {% endif %}
       <hr>
       <div id="solutions" class="collapse">
-        <h4>#1 - Hello, World!</h4>
-        <br>
-        <center><script src="//repl.it/embed/CeZe/0.js"></script></center>
-        <hr>
-        <h4>#2 - Strings</h4>
-        <br>
-        <center><script src="//repl.it/embed/CgBm/1.js"></script></center>
-        <hr>
-        <h4>#3 - Integers</h4>
-        <br>
-        <center><script src="//repl.it/embed/CgCA/0.js"></script></center>
-        <hr>
-        <h4>#4 - Booleans</h4>
-        <br>
-        <center><script src="//repl.it/embed/CgCT/1.js"></script></center>
-        <hr>
+        {% for i, solution in enumerate(solutions) %}
+          <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#{{ solution.id_ }}solution">#{{ i }} - {{ solution.title }}</button>
+          <div id="{{ solution.id_ }}solution" class="collapse">
+            <br>
+            <center><script src="{{ solution.repl_src }}"></script></center>
+          </div>
+          <hr>
+        {% endfor %}
       </div>
       <h3>Resources</h3>
       <hr>
