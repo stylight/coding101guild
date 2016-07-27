@@ -18,8 +18,8 @@ def index():
 
 def disable_solutions():
     time_now = datetime.datetime.now()
-    # release = datetime.datetime(2016, 7, 27, 17, 45, 0)
-    release = datetime.datetime(2016, 7, 26, 11, 45, 0)
+    release = datetime.datetime(2016, 7, 27, 17, 35, 0)
+    # release = datetime.datetime(2016, 7, 26, 11, 45, 0)
     if time_now > release:
         return False
     else:
