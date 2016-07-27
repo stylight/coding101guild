@@ -128,6 +128,12 @@ def session_challenges(session_num):
                 repl_solution='//repl.it/embed/CeZx/1.js'
             ),
             Challenge(
+                title='Print Even Numbers',
+                id_='even_nums',
+                repl_src='//repl.it/embed/CgXv/0.js',
+                repl_solution='//repl.it/embed/CgXw/0.js'
+            ),
+            Challenge(
                 title='Friends',
                 id_='friends',
                 repl_src='//repl.it/embed/CeZn/12.js',
@@ -139,12 +145,12 @@ def session_challenges(session_num):
                 repl_src='//repl.it/embed/Ce0F/1.js',
                 repl_solution='//repl.it/embed/Ce0G/1.js'
             ),
-            Challenge(
-                title='',
-                id_='',
-                repl_src='',
-                repl_solution=''
-            ),
+            # Challenge(
+            #     title='',
+            #     id_='',
+            #     repl_src='',
+            #     repl_solution=''
+            # ),
         ]
 
     return challenges
