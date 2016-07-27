@@ -74,7 +74,7 @@ def session_challenges(session_num):
                          caption="Python"),
                 ],
                 description='Modify the follow code so that the type of the variable <i>my_string</i> is a string.',
-                repl_src="//repl.it/embed/CgBf/0.js",
+                repl_src="//repl.it/embed/CgBf/2.js",
                 repl_solution="//repl.it/embed/CgBm/1.js"
             ),
             Challenge(
