@@ -1,11 +1,143 @@
 {% extends "./layout.html" %}
 {% block content %}
+<style>
+  li {
+    font-size: 20px;
+  }
+</style>
     <div class="col-sm-2 sidenav">
     </div>
     <div class="col-sm-8 text-left">
       <h1>Session 4</h1>
       <hr>
-      <h3>To be determined...</h3>
+      <h3>Agenda</h3>
+      <hr>
+      <ul>
+        <li>HTML/CSS Tutorial</li>
+        <li>Deploy website with Python</li>
+      </ul>
+      <hr>
+      <h3>Create your own website</h3>
+        <ol>
+          <li>Make an account for yourself at <a href="https://www.codecademy.com/learn" target="_blank">Codecademy</a> if you do not have one already.</li>
+          <br>
+          <li>Work through the tutorial <a href="https://www.codecademy.com/courses/web-beginner-en-3pc6w/0/1" target="_blank">About You - Make a website all about you</a>.
+          At the end of the tutorial you should have an "index.html" file that renders something like this:
+          </li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/starry.png"/></center>
+          <br>
+          <br>
+          <li>Create an account for yourself at <a href="https://www.pythonanywhere.com/registration/register/beginner/" target="_blank">PythonAnywhere</a> and confirm your account through your email address.
+            PythonAnywhere allows you to "host, run, and code Python in the cloud" which basically means we can create and deploy a Python web application right in the browser.</li>
+          <br>
+          <li>After creating an account, navigate to the "Web" tab in the navigation bar and click "Add a new web app".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/web.png"/></center>
+          <br>
+          <br>
+          <li>The basic plan for PythonAnywhere doesn't support custom domain names, i.e. the web address of your site, so click "Next" on this step.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/cdn.png"/></center>
+          <br>
+          <br>
+          <li>The next step is to select a Python Web framework. A web framework can be thought of as a model for how a website is developed as well as a tool set for web development.
+          We will be using the Flask framework (actually, we use Flask for many of our Python microservices at Stylight!) because it is lightweight and easy to learn.
+          Select "Flask" from the list of frameworks and click "Next".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/flask.png"/></center>
+          <br>
+          <br>
+          <li>Choose "Python 3.5" from the list of Python versions and click "Next".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/python3.png"/></center>
+          <br>
+          <br>
+          <li>On the "Quickstart new Flask project" page, you can change the name of the folder path where you app exists; however, we'll just use the default path, so you do not need to change anything here. Click "Next".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/path.png"/></center>
+          <br>
+          <br>
+          <li>You should now see a page like the one below:</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/home.png"/></center>
+          <br>
+          <br>
+          <li>Navigate to the "Files" tab on the navigation bar. On the left side of this page, you can see your directories (folders) and on the right, the files in the opened directory.
+          You can see the directory path on the top left under "Consoles." In this example. the opened directory is "/home/coding101".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/directories.png"/></center>
+          <br>
+          <br>
+          <li>Under the "Directories" view, open the directory called "mysite/". You should then be able to see the Python called "flask_app.py" under the "Files" view.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/mysite.png"/></center>
+          <br>
+          <br>
+          <li>Open up the "flask_app.py" Python file. This opens a simple Python IDE (Integrated Development Environment) which is simply a text editor that helps for Python development.
+          In the file, there is already code for "Hello World".  On line 8, change "@app.route('/')" to be "@app.route('/hello')" as shown below, and click "Save" on the upper right corner.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/hello.png"/></center>
+          <br>
+          <br>
+          <li>Navigate back to the "Dashboard" (located on top right corner of page). And then navigate to the "Web" tab. Under the "Web" view, click on the yellow button, "Run until 3 months from today."
+          This begins your website for a period of three months. Then click the green button, "Reload ..." to deploy your website.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/deploy.png"/></center>
+          <br>
+          <br>
+          <li>In your browser address bar, navigate to your website followed by the path "hello/" which should be <i>username</i>.pythonanywhere.com/hello, e.g. <a href="http://coding101.pythonanywhere.com/hello" target="_blank">coding101.pythonanywhere.com/hello</a>. You should then see, "Hello from Flask!" on the webpage.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/helloflask.png"/></center>
+          <br>
+          <br>
+          <li>Congratulations! You now have your own website &#9786;. Let's now add your Codecademy masterpiece to your website. Navigate back to your files and under the "Directory" view and go into the directory "mysite/", then type "templates" in the input "Enter new directory name" and click "New directory".</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/templates.png"/></center>
+          <br>
+          <br>
+          <li>You can see from the file path, that you are now in the new directory you created called "templates". Under the "Files" view, type "index.html" in the "Enter new file name" input and them click "New file."</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/index.png"/></center>
+          <br>
+          <br>
+          <li>The text editor should now be opened for the file "index.html".  You should now copy & paste the contents from your Codecademy "index.html" file into the editor like below and click "Save":</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/codecadeny.png"/></center>
+          <br>
+          <br>
+          <li>Navigate to "Files" and then open up to the directory "mysite/" and then open the Python file "flask_app.py". Modify the Python file so that it is identical to the file below.
+            Be sure to add the "from flask import render_template" at line 5 and lines 13-15.
+            Basically, we are adding a Python function that will render our HTML template, in this case "index.html". Click "Save" when done.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/flask2.png"/></center>
+          <br>
+          <br>
+          <li>Navigate back to "Web", click the green "Reload <i>username</i>.pythonanywhere.com" then open your webpage <i>username</i>.pythonanywhere.com, e.g. <a href="http://coding101.pythonanywhere.com/">coding101.pythonanywhere.com</a>. You should see the same HTML page you created at Codecademy. If you have a 404 Not Found or 500 Internal Server error, ask for help.</li>
+          <br>
+          <br>
+          <center><img src="/static/images/session4/vangogh.png"/></center>
+          <br>
+          <br>
+          <li>Voila! You can now play around and make changes to your index.html, reload, and then instantly see the changes on your new website. Have fun!</li>
+        </ol>
+      <hr>
     </div>
     <div class="col-sm-2 sidenav">
     </div>
